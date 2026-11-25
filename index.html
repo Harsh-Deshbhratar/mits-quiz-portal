@@ -1,1 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#061a2b">
+  <title>MITS Quiz Portal | Development of Intelligence Quiz Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="institution-banner" style="width: 100%;padding: 0; margin: 0;overflow: hidden; background: #ffffff;"><img src="assets/mits-header.jpg" width="1484" height="261" alt="Madhav Institute of Technology & Science, Gwalior institutional header" style="display: block; width: 100%; max-width: auto; height: 160px ; margin: 0 auto;"></div>
+<div id="toast" class="toast" role="status"></div>
+<section id="authView" class="auth-shell">
+  <!-- <div class="auth-brand">
+    <div class="brand-mark">M</div>
+    <div><b>MITS <span>Quiz Portal</span></b><small>Development of Intelligence Quiz Portal</small></div>
+  </div> -->
+  <div class="auth-card">
+    
+    <div class="eyebrow">MITS GWALIOR · ACADEMIC QUIZ & LEARNING PLATFORM</div>
+    <h1>Learn. Practice.<br><span>Excel.</span></h1>
+    <p class="muted">A unified academic workspace for students, faculty and administrators—quizzes, lectures, notes, library and academic support.</p>
+    <div class="tabs">
+      <button class="tab active" data-auth-tab="login">Sign in</button>
+      <button class="tab" data-auth-tab="register">Create account</button>
+    </div>
+    <form id="loginForm" class="form-stack">
+      <label>Institutional email<input name="email" type="email" placeholder="you@mitsgwl.ac.in" required autocomplete="username"></label>
+      <label>Password<input name="password" type="password" placeholder="Enter your password" required autocomplete="current-password"></label>
+      <button class="btn primary wide" type="submit">Sign in to portal <span>→</span></button>
+    </form>
+    <form id="registerForm" class="form-stack hidden">
+      <label>Full name<input name="name" minlength="2" maxlength="100" required placeholder="Your full name"></label>
+      <label>Institutional email<input name="email" type="email" required placeholder="Student or faculty email"></label>
+      <label>Account type<select name="role" required><option value="student">Student</option><option value="teacher">Teacher / Faculty</option></select></label>
+      <label>Password<input name="password" type="password" minlength="10" required placeholder="At least 10 characters"></label>
+      <button class="btn primary wide" type="submit">Request account <span>→</span></button>
+      <small class="muted">Faculty accounts require administrator approval before access.</small>
+    </form>
+    <div class="auth-foot">Secure institutional access · MITS Gwalior</div><button class="text-link" id="publicDevelopersBtn" type="button">Meet the project developers →</button>
+  </div>
+  <div class="auth-side">
+    <div class="side-orbit"></div>
+    <div class="side-content"><span class="pill">✦ MITS · Academic innovation</span><h2>One campus.<br>One connected portal.</h2><p>Students learn and attempt assessments. Faculty manage classes, students and resources. Administrators oversee the academic platform.</p><div class="side-stats"><div><b>3 roles</b><small>Role-based access</small></div><div><b>24/7</b><small>Learning access</small></div><div><b>One</b><small>Academic workspace</small></div></div></div>
+  </div>
+</section>
 
+<div id="appView" class="app hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-row"><div class="brand-mark small">M</div><div><b>MITS <span>Quiz Portal</span></b><small>Academic assessment platform</small></div></div>
+    <div class="profile-mini"><div class="avatar" id="avatarInitial">H</div><div><b id="sideName">Student</b><small id="sideRole">STUDENT</small></div><span class="online-dot"></span></div>
+    <nav id="navLinks"></nav>
+    <div class="side-bottom"><div class="secure-note">● Secure session active</div><button id="logoutBtn" class="nav-link logout">↪ <span>Sign out</span></button></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><button id="menuBtn" class="icon-btn" aria-label="Toggle menu">☰</button><div><div class="eyebrow">MITS AUTONOMOUS · ACADEMIC WORKSPACE</div><h2 id="pageTitle">Dashboard</h2></div><div class="top-actions"><button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Toggle light or dark theme">☾</button><span class="status-chip">● Portal workspace</span><div class="top-user"><div class="avatar tiny" id="topAvatar">H</div><span id="topName">Student</span></div></div></header>
+    <div id="noticeBar" class="notice hidden"></div>
+    <section id="pageContent" class="page-content"></section>
+    <footer class="footer">MITS Quiz Portal · Development of Intelligence Quiz Portal <span>Project website · MITS Gwalior</span></footer>
+  </main>
+</div>
+<dialog id="modal" class="modal"><form method="dialog"><button class="modal-close" aria-label="Close">×</button></form><div id="modalBody"></div></dialog>
+<section id="publicDevelopers" class="public-developers hidden" aria-label="Project developers">
+  <div class="developers-top"><button id="backToLogin" class="btn soft" type="button">← Back to sign in</button><span class="eyebrow">PROJECT TEAM</span></div>
+  <div class="developers-heading"><div class="eyebrow">MITS QUIZ PORTAL</div><h1>Meet the <span>developers.</span></h1><p>Development of Intelligence Quiz Portal</p></div>
+  <div id="publicDeveloperCards" class="developer-grid"><div class="empty">Loading developer profiles…</div></div>
+  <p class="developer-note">Project team information is maintained by the designated project lead.</p>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
