@@ -1,1 +1,7 @@
-
+<?php
+require __DIR__.'/config.php';
+$msg='';
+try{$pdo=new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8mb4',DB_USER,DB_PASS,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);$exists=(int)$pdo->query("SELECT COUNT(*) FROM users WHERE role='admin'")->fetchColumn();if($exists){http_response_code(403);die('An administrator already exists. Remove this setup file now.');}
+if($_SERVER['REQUEST_METHOD']==='POST'){$name=trim($_POST['name']??'');$email=strtolower(trim($_POST['email']??''));$pass=$_POST['password']??'';if($name===''||!filter_var($email,FILTER_VALIDATE_EMAIL)||strlen($pass)<14)$msg='Enter a name, valid admin email and password with at least 14 characters.';else{$s=$pdo->prepare("INSERT INTO users(name,email,password_hash,role,status) VALUES(?,?,?,'admin','active')");$s->execute([$name,$email,password_hash($pass,PASSWORD_DEFAULT)]);$msg='Admin account created. Delete setup_admin.php immediately, then sign in.';}}
+}catch(Throwable $e){$msg='Database not ready. Import schema.sql and check config.php.';}
+?><!doctype html><html><meta name="viewport" content="width=device-width"><title>Initial Admin Setup</title><body style="font:16px Arial;max-width:500px;margin:50px auto;padding:20px"><h2>MITS EduNova · Initial Admin Setup</h2><p><?=htmlspecialchars($msg)?></p><form method="post"><p>Name<br><input name="name" required></p><p>Admin email<br><input name="email" type="email" required></p><p>Password (14+ characters)<br><input name="password" type="password" minlength="14" required></p><button>Create administrator</button></form></body></html>
